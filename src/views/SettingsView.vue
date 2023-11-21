@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import MainLayout from "@/layouts/MainLayout.vue";
+</script>
+
 <template>
-  <h1 class="text-4xl font-bold">Settings</h1>
+  <main-layout title="Settings"> </main-layout>
 </template>
