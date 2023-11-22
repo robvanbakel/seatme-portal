@@ -37,7 +37,7 @@ const menuItems: {
       :key="item.label"
       :to="item.route"
       role="button"
-      class="flex items-center rounded-2xl p-5 text-slate-400 active:bg-slate-100 hover:[&:not(.bg-slate-100)]:bg-slate-50"
+      class="flex items-center rounded-2xl p-5 active:bg-slate-100 hover:[&:not(.bg-slate-100)]:bg-slate-50 [&:not(.text-indigo-600)]:text-slate-400"
       active-class="bg-slate-100 text-indigo-600"
     >
       <component :is="item.icon" class="mr-5 w-6" />
