@@ -39,7 +39,7 @@ onMounted(async () => {
             {{ upcomingReservations.length }} reservations
           </span>
         </div>
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-auto-fill-80 gap-6">
           <ReservationIndexBlock
             v-for="reservation in upcomingReservations"
             :key="reservation.id"
@@ -54,7 +54,7 @@ onMounted(async () => {
             {{ checkedInReservations.length }} reservations
           </span>
         </div>
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-auto-fill-80 gap-6">
           <ReservationIndexBlock
             v-for="reservation in checkedInReservations"
             :key="reservation.id"
