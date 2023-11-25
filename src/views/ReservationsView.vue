@@ -12,16 +12,19 @@ const reservations = ref<ReservationIndex[]>([]);
 const upcomingReservations = computed(() => {
   return reservations.value
     .filter(({ checked_in_at }) => !checked_in_at)
-    .reverse();
+    .sort(
+      (a, b) =>
+        new Date(b.arrival_time).valueOf() - new Date(a.arrival_time).valueOf()
+    );
 });
 
 const checkedInReservations = computed(() => {
-  return reservations.value.filter(({ checked_in_at }) => !!checked_in_at);
-});
-
-onMounted(async () => {
-  const data = await fetchReservations();
-  reservations.value = data;
+  return reservations.value
+    .filter(({ checked_in_at }) => !!checked_in_at)
+    .sort(
+      (a, b) =>
+        new Date(a.arrival_time).valueOf() - new Date(b.arrival_time).valueOf()
+    );
 });
 </script>
 
