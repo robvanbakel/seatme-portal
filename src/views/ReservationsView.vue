@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { computed } from "vue";
 import MainLayout from "@/layouts/MainLayout.vue";
 import { PlusIcon } from "@heroicons/vue/20/solid";
 import MainButton from "@/components/MainButton.vue";
-import type { ReservationIndex } from "@/types/reservations";
-import { fetchReservations } from "@/api/reservations";
 import ReservationIndexBlock from "@/components/reservations/ReservationIndexBlock.vue";
+import { useReservations } from "@/composables/reservations";
+import ReservationIndexBlockSkeleton from "@/components/reservations/ReservationIndexBlockSkeleton.vue";
 
-const reservations = ref<ReservationIndex[]>([]);
+const { reservations, loading } = useReservations();
 
 const upcomingReservations = computed(() => {
   return reservations.value
@@ -38,31 +38,41 @@ const checkedInReservations = computed(() => {
       <div>
         <div class="mb-4 flex items-baseline">
           <h3 class="text-2xl font-semibold text-slate-400">Upcoming</h3>
-          <span class="ml-2 text-sm text-slate-400">
+          <span v-if="!loading" class="ml-2 text-sm text-slate-400">
             {{ upcomingReservations.length }} reservations
           </span>
         </div>
         <div class="grid grid-cols-auto-fill-80 gap-6">
-          <ReservationIndexBlock
-            v-for="reservation in upcomingReservations"
-            :key="reservation.id"
-            v-bind="{ reservation }"
-          />
+          <template v-if="loading">
+            <ReservationIndexBlockSkeleton v-for="i in 3" :key="i" />
+          </template>
+          <template v-else>
+            <ReservationIndexBlock
+              v-for="reservation in upcomingReservations"
+              :key="reservation.id"
+              v-bind="{ reservation }"
+            />
+          </template>
         </div>
       </div>
       <div>
         <div class="mb-4 flex items-baseline">
           <h3 class="text-2xl font-semibold text-slate-400">Checked in</h3>
-          <span class="ml-2 text-sm text-slate-400">
+          <span v-if="!loading" class="ml-2 text-sm text-slate-400">
             {{ checkedInReservations.length }} reservations
           </span>
         </div>
         <div class="grid grid-cols-auto-fill-80 gap-6">
-          <ReservationIndexBlock
-            v-for="reservation in checkedInReservations"
-            :key="reservation.id"
-            v-bind="{ reservation }"
-          />
+          <template v-if="loading">
+            <ReservationIndexBlockSkeleton v-for="i in 6" :key="i" />
+          </template>
+          <template v-else>
+            <ReservationIndexBlock
+              v-for="reservation in checkedInReservations"
+              :key="reservation.id"
+              v-bind="{ reservation }"
+            />
+          </template>
         </div>
       </div>
     </div>
