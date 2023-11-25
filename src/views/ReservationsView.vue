@@ -10,7 +10,9 @@ import ReservationIndexBlock from "@/components/reservations/ReservationIndexBlo
 const reservations = ref<ReservationIndex[]>([]);
 
 const upcomingReservations = computed(() => {
-  return reservations.value.filter(({ checked_in_at }) => !checked_in_at);
+  return reservations.value
+    .filter(({ checked_in_at }) => !checked_in_at)
+    .reverse();
 });
 
 const checkedInReservations = computed(() => {
