@@ -13,6 +13,16 @@ const router = createRouter({
       path: "/reservations",
       name: "reservations",
       component: () => import("@/views/ReservationsView.vue"),
+      children: [
+        {
+          path: ":reservationId",
+          name: "reservationsSingle",
+          props: true,
+          components: {
+            sidepanel: () => import("@/views/ReservationsSingle.vue"),
+          },
+        },
+      ],
     },
     {
       path: "/settings",

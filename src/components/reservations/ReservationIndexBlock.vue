@@ -6,8 +6,10 @@ import { useSettingsStore } from "@/stores/settings";
 import { computedWithControl } from "@vueuse/core";
 import { CronJob } from "cron";
 import { onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
 
 const settingsStore = useSettingsStore();
+const router = useRouter();
 
 const props = defineProps<{
   reservation: Reservation;
@@ -25,6 +27,13 @@ const statusSpecificClasses = computedWithControl(
       : "bg-indigo-400 text-white hover:bg-indigo-700";
   }
 );
+
+const openReservation = () => {
+  router.push({
+    name: "reservationsSingle",
+    params: { reservationId: props.reservation.id },
+  });
+};
 
 const cronJob = new CronJob("* * * * *", () => {
   statusSpecificClasses.trigger();
@@ -44,6 +53,7 @@ onUnmounted(() => {
     role="button"
     class="flex h-36 flex-col justify-between rounded-xl p-4 transition-colors"
     :class="statusSpecificClasses"
+    @click="openReservation"
   >
     <h4 class="font-semibold">{{ reservation.name }}</h4>
     <div class="space-y-1">

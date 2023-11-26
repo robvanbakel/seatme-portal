@@ -11,11 +11,13 @@ const authStore = useAuthStore();
   <auth-layout v-if="!authStore.isLoggedIn">
     <RouterView />
   </auth-layout>
+
   <div v-else class="flex">
     <nav class="flex min-h-screen w-72 shrink-0 flex-col bg-white px-6">
       <RestaurantDetails class="py-12" />
       <MainNavigationVue />
     </nav>
+
     <main class="grow px-6 pt-12">
       <RouterView />
     </main>
