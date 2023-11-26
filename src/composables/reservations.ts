@@ -1,10 +1,10 @@
 import { ref, onUnmounted } from "vue";
-import type { ReservationIndex } from "@/types/reservations";
+import type { Reservation } from "@/types/reservations";
 import { fetchReservations } from "@/api/reservations";
 import supabase from "@/lib/supabase";
 
 export const useReservations = () => {
-  const reservations = ref<ReservationIndex[]>([]);
+  const reservations = ref<Reservation[]>([]);
   const loading = ref(false);
 
   const fetchData = async () => {
@@ -24,7 +24,7 @@ export const useReservations = () => {
 
   const subscription = supabase
     .channel("reservation")
-    .on<ReservationIndex>(
+    .on<Reservation>(
       "postgres_changes",
       {
         event: "*",

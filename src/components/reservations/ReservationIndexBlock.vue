@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import type { ReservationIndex } from "@/types/reservations";
+import type { Reservation } from "@/types/reservations";
 import { ClockIcon, UserIcon } from "@heroicons/vue/20/solid";
 import { useSettingsStore } from "@/stores/settings";
 import { computedWithControl } from "@vueuse/core";
@@ -10,7 +10,7 @@ import { onMounted, onUnmounted } from "vue";
 const settingsStore = useSettingsStore();
 
 const props = defineProps<{
-  reservation: ReservationIndex;
+  reservation: Reservation;
 }>();
 
 const statusSpecificClasses = computedWithControl(
