@@ -12,7 +12,10 @@ defineProps<{
 
 const open = computed({
   get: () => !!route.matched.at(-1)?.props.sidepanel,
-  set: () => router.push({ path: route.matched.at(-2)?.path ?? "/" }),
+  set: (value) => {
+    if (value || !open.value) return;
+    router.push({ path: route.matched.at(-2)?.path ?? "/" });
+  },
 });
 </script>
 
