@@ -3,5 +3,5 @@ import MainLayout from "@/layouts/MainLayout.vue";
 </script>
 
 <template>
-  <main-layout title="Dashboard"> </main-layout>
+  <main-layout title="Reports"> </main-layout>
 </template>

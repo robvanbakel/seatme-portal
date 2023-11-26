@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {
-  HomeIcon,
-  CalendarIcon,
+  CalendarDaysIcon,
+  QueueListIcon,
+  ChartBarIcon,
   Cog6ToothIcon,
 } from "@heroicons/vue/24/outline";
 import type { Component } from "vue";
@@ -13,14 +14,19 @@ const menuItems: {
   route: RouteLocationRaw;
 }[] = [
   {
-    label: "Dashboard",
-    icon: HomeIcon,
-    route: { name: "dashboard" },
+    label: "Today",
+    icon: CalendarDaysIcon,
+    route: { name: "today" },
   },
   {
     label: "Reservations",
-    icon: CalendarIcon,
+    icon: QueueListIcon,
     route: { name: "reservations" },
+  },
+  {
+    label: "Reports",
+    icon: ChartBarIcon,
+    route: { name: "reports" },
   },
   {
     label: "Settings",

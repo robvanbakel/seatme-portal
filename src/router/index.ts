@@ -6,23 +6,28 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "dashboard",
-      component: () => import("@/views/DashboardView.vue"),
+      name: "today",
+      component: () => import("@/views/DailyView.vue"),
+      children: [
+        {
+          path: ":reservationId",
+          name: "reservationSingle",
+          props: true,
+          components: {
+            sidepanel: () => import("@/views/ReservationSingle.vue"),
+          },
+        },
+      ],
     },
     {
       path: "/reservations",
       name: "reservations",
       component: () => import("@/views/ReservationsView.vue"),
-      children: [
-        {
-          path: ":reservationId",
-          name: "reservationsSingle",
-          props: true,
-          components: {
-            sidepanel: () => import("@/views/ReservationsSingle.vue"),
-          },
-        },
-      ],
+    },
+    {
+      path: "/reports",
+      name: "reports",
+      component: () => import("@/views/ReportsView.vue"),
     },
     {
       path: "/settings",

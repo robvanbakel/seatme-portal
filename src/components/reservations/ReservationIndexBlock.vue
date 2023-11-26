@@ -30,7 +30,7 @@ const statusSpecificClasses = computedWithControl(
 
 const openReservation = () => {
   router.push({
-    name: "reservationsSingle",
+    name: "reservationSingle",
     params: { reservationId: props.reservation.id },
   });
 };
