@@ -14,7 +14,7 @@ const upcomingReservations = computed(() => {
     .filter(({ checked_in_at }) => !checked_in_at)
     .sort(
       (a, b) =>
-        new Date(b.arrival_time).valueOf() - new Date(a.arrival_time).valueOf()
+        new Date(a.arrival_time).valueOf() - new Date(b.arrival_time).valueOf()
     );
 });
 
@@ -23,7 +23,7 @@ const checkedInReservations = computed(() => {
     .filter(({ checked_in_at }) => !!checked_in_at)
     .sort(
       (a, b) =>
-        new Date(a.arrival_time).valueOf() - new Date(b.arrival_time).valueOf()
+        new Date(b.arrival_time).valueOf() - new Date(a.arrival_time).valueOf()
     );
 });
 </script>
