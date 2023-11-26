@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import type { Reservation } from "@/types/reservations";
-import { ClockIcon, UserIcon } from "@heroicons/vue/20/solid";
+import { UserIcon } from "@heroicons/vue/20/solid";
+import ClockIcon from "@/components/ClockIcon.vue";
 import { useSettingsStore } from "@/stores/settings";
 import { computedWithControl } from "@vueuse/core";
 import { CronJob } from "cron";
@@ -58,7 +59,7 @@ onUnmounted(() => {
     <h4 class="font-semibold">{{ reservation.name }}</h4>
     <div class="space-y-1">
       <div class="flex">
-        <ClockIcon class="mr-2 w-4" />
+        <ClockIcon :timestamp="reservation.arrival_time" class="mr-2 w-4" />
         <span class="text-sm">
           {{ dayjs(reservation.arrival_time).format("HH:mm") }}
         </span>
