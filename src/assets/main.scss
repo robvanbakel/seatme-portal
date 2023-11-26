@@ -7,3 +7,9 @@
     @apply bg-slate-100 text-slate-800;
   }
 }
+@layer components {
+  button,
+  [role="button"] {
+    @apply select-none;
+  }
+}
