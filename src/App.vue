@@ -2,9 +2,30 @@
 import MainNavigationVue from "@/components/mainMenu/MainNavigation.vue";
 import RestaurantDetails from "@/components/mainMenu/RestaurantDetails.vue";
 import { useAuthStore } from "@/stores/auth";
+import { useReservationsStore } from "@/stores/reservations";
 import AuthLayout from "@/layouts/AuthLayout.vue";
+import supabase from "@/lib/supabase";
+import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
+const reservationsStore = useReservationsStore();
+const router = useRouter();
+
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const authStore = useAuthStore();
+
+  authStore.user = session?.user ?? null;
+
+  if (event === "SIGNED_IN") {
+    reservationsStore.init();
+    return;
+  }
+
+  if (session) return;
+
+  reservationsStore.exit();
+  router.push({ name: "login" });
+});
 </script>
 
 <template>

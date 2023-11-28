@@ -2,14 +2,14 @@ import supabase from "@/lib/supabase";
 import type { Reservation } from "@/types/reservations";
 import { useSettingsStore } from "@/stores/settings";
 
-const settingsStore = useSettingsStore();
-
-export const fetchReservations = (
+export const fetchReservations = async (
   options: Partial<{
     from: string;
     to: string;
   }> = {}
 ) => {
+  const settingsStore = useSettingsStore();
+
   return supabase
     .from("reservation")
     .select("*")

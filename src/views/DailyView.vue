@@ -4,13 +4,13 @@ import MainLayout from "@/layouts/MainLayout.vue";
 import { PlusIcon } from "@heroicons/vue/20/solid";
 import MainButton from "@/components/MainButton.vue";
 import ReservationIndexBlock from "@/components/reservations/ReservationIndexBlock.vue";
-import { useReservations } from "@/composables/reservations";
+import { useReservationsStore } from "@/stores/reservations";
 import ReservationIndexBlockSkeleton from "@/components/reservations/ReservationIndexBlockSkeleton.vue";
 
-const { reservations, loading } = useReservations();
+const reservationsStore = useReservationsStore();
 
 const upcomingReservations = computed(() => {
-  return reservations.value
+  return reservationsStore.reservations
     .filter(({ checked_in_at }) => !checked_in_at)
     .sort(
       (a, b) =>
@@ -19,7 +19,7 @@ const upcomingReservations = computed(() => {
 });
 
 const checkedInReservations = computed(() => {
-  return reservations.value
+  return reservationsStore.reservations
     .filter(({ checked_in_at }) => !!checked_in_at)
     .sort(
       (a, b) =>
@@ -38,12 +38,15 @@ const checkedInReservations = computed(() => {
       <div>
         <div class="mb-4 flex items-baseline">
           <h3 class="text-2xl font-semibold text-slate-400">Upcoming</h3>
-          <span v-if="!loading" class="ml-2 text-sm text-slate-400">
+          <span
+            v-if="!reservationsStore.loading"
+            class="ml-2 text-sm text-slate-400"
+          >
             {{ upcomingReservations.length }} reservations
           </span>
         </div>
         <div class="grid grid-cols-auto-fill-80 gap-6">
-          <template v-if="loading">
+          <template v-if="reservationsStore.loading">
             <ReservationIndexBlockSkeleton v-for="i in 3" :key="i" />
           </template>
           <template v-else>
@@ -58,12 +61,15 @@ const checkedInReservations = computed(() => {
       <div>
         <div class="mb-4 flex items-baseline">
           <h3 class="text-2xl font-semibold text-slate-400">Checked in</h3>
-          <span v-if="!loading" class="ml-2 text-sm text-slate-400">
+          <span
+            v-if="!reservationsStore.loading"
+            class="ml-2 text-sm text-slate-400"
+          >
             {{ checkedInReservations.length }} reservations
           </span>
         </div>
         <div class="grid grid-cols-auto-fill-80 gap-6">
-          <template v-if="loading">
+          <template v-if="reservationsStore.loading">
             <ReservationIndexBlockSkeleton v-for="i in 6" :key="i" />
           </template>
           <template v-else>
