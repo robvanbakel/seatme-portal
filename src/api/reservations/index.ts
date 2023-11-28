@@ -1,16 +1,19 @@
 import supabase from "@/lib/supabase";
-import dayjs from "dayjs";
 import type { Reservation } from "@/types/reservations";
+import { useSettingsStore } from "@/stores/settings";
 
-export const fetchReservations = () => {
+const settingsStore = useSettingsStore();
+
+export const fetchReservations = (
+  options: Partial<{
+    from: string;
+    to: string;
+  }> = {}
+) => {
   return supabase
     .from("reservation")
-    .select(`*`)
-    .lt(
-      "arrival_time",
-      dayjs().add(1, "day").startOf("day").format("YYYY-MM-DD")
-    )
-    .gte("arrival_time", dayjs().startOf("day").format("YYYY-MM-DD"))
-    .throwOnError()
+    .select("*")
+    .lt("arrival_time", options.to ?? settingsStore.currentWindow.to)
+    .gte("arrival_time", options.from ?? settingsStore.currentWindow.from)
     .returns<Reservation[]>();
 };
