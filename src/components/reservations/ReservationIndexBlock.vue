@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import type { Reservation } from "@/types/reservations";
-import { UserIcon } from "@heroicons/vue/20/solid";
 import ClockIcon from "@/components/ClockIcon.vue";
 import { useSettingsStore } from "@/stores/settings";
 import { computedWithControl } from "@vueuse/core";
 import { CronJob } from "cron";
 import { onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
+import PartySizeIcon from "@/components/PartySizeIcon.vue";
 
 const settingsStore = useSettingsStore();
 const router = useRouter();
@@ -65,7 +65,7 @@ onUnmounted(() => {
         </span>
       </div>
       <div class="flex">
-        <UserIcon class="mr-2 w-4" />
+        <PartySizeIcon :party-size="reservation.party_size" class="mr-2 w-4" />
         <span class="text-sm">{{ reservation.party_size }} people</span>
       </div>
     </div>

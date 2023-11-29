@@ -55,7 +55,9 @@ const blurField = () => {
       class="mb-2 flex justify-between text-sm text-slate-800"
     >
       <div class="flex space-x-2 whitespace-nowrap">
-        <component :is="icon" class="w-4" />
+        <slot name="icon">
+          <component :is="icon" class="w-4" />
+        </slot>
         <span>{{ label }}</span>
       </div>
       <slot name="labelDetail"> </slot>

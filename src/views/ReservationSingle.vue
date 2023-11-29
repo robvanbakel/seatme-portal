@@ -10,13 +10,13 @@ import {
 import {
   EnvelopeIcon,
   PhoneIcon,
-  UserIcon,
   StarIcon,
   PencilSquareIcon,
   ClockIcon,
 } from "@heroicons/vue/20/solid";
 import MainInput from "@/components/MainInput.vue";
 import { useToggle } from "@vueuse/core";
+import PartySizeIcon from "@/components/PartySizeIcon.vue";
 
 const props = defineProps<{
   reservationId: string;
@@ -85,12 +85,10 @@ const reservation = computed(() => {
         :data="reservation"
       />
 
-      <main-input
-        field="party_size"
-        label="Party size"
-        :icon="UserIcon"
-        :data="reservation"
-      >
+      <main-input field="party_size" label="Party size" :data="reservation">
+        <template #icon>
+          <PartySizeIcon :party-size="reservation.party_size" class="w-4" />
+        </template>
         <template #default="{ updateFieldValue }">
           <div class="grid grid-cols-5 gap-3">
             <button
