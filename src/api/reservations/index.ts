@@ -17,3 +17,14 @@ export const fetchReservations = async (
     .gte("arrival_time", options.from ?? settingsStore.currentWindow.from)
     .returns<Reservation[]>();
 };
+
+export const updateReservation = async <T>(
+  id: string,
+  field: string,
+  value: T
+) => {
+  return supabase
+    .from("reservation")
+    .update({ [field]: value })
+    .eq("id", id);
+};
