@@ -26,7 +26,7 @@ const closePanel = () => {
   >
     <div
       v-if="open"
-      class="fixed inset-y-0 right-0 h-full w-1/3 min-w-[30rem] max-w-full overflow-y-scroll bg-slate-50 p-9 pt-12 shadow-2xl shadow-slate-950/25"
+      class="fixed inset-y-0 right-0 h-full w-[30rem] max-w-full overflow-y-scroll bg-slate-50 p-9 pt-12 shadow-2xl shadow-slate-950/25"
     >
       <slot> </slot>
     </div>
