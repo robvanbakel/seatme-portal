@@ -5,6 +5,7 @@ export type Reservation = {
   restaurant_id: string;
   party_size: number;
   name: string;
+  notes: string | null;
   email: string | null;
   phone: string | null;
   preferred_contact_method: "email" | "phone";
