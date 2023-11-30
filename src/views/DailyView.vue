@@ -58,7 +58,7 @@ const checkedInReservations = computed(() => {
           </template>
         </div>
       </div>
-      <div>
+      <div v-if="checkedInReservations.length">
         <div class="mb-4 flex items-baseline">
           <h3 class="text-2xl font-semibold text-slate-400">Checked in</h3>
           <span
