@@ -60,7 +60,7 @@ const reservation = computed(() => {
       </template>
     </div>
 
-    <div class="mt-4 flex space-x-4">
+    <div v-if="!reservation.checked_in_at" class="mt-4 flex space-x-4">
       <MainButton
         class="grow"
         variant="block"
