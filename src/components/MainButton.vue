@@ -17,7 +17,7 @@ const props = withDefaults(
 const priorityClasses = computed(() => {
   switch (props.priority) {
     case "primary":
-      return "bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800";
+      return "bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800";
     case "secondary":
       return "bg-slate-200 text-slate-800 hover:bg-slate-300 active:bg-slate-400";
     default:

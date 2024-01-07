@@ -24,14 +24,14 @@ defineExpose({ blur });
       ref="fieldElement"
       v-bind="$attrs"
       v-model="modelValue"
-      class="h-32 min-h-[48px] resize-y rounded-md border-slate-200 px-4 text-slate-800 hover:ring-1 focus:ring-indigo-600"
+      class="h-32 min-h-[48px] resize-y rounded-md border-slate-200 px-4 text-slate-800 hover:ring-1 focus:ring-primary-600"
     ></textarea>
     <input
       v-else
       ref="fieldElement"
       v-bind="$attrs"
       v-model="modelValue"
-      class="h-12 rounded-md border-slate-200 px-4 text-slate-800 hover:ring-1 focus:ring-indigo-600"
+      class="h-12 rounded-md border-slate-200 px-4 text-slate-800 hover:ring-1 focus:ring-primary-600"
     />
     <slot name="fieldDetails"></slot>
   </div>

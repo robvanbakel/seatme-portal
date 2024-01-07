@@ -98,8 +98,8 @@ const reservation = computed(() => {
               :disabled="reservation.party_size === i"
               :class="
                 reservation.party_size === i
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-indigo-200 text-slate-800 hover:bg-indigo-300 active:bg-indigo-400'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-primary-200 text-slate-800 hover:bg-primary-300 active:bg-primary-400'
               "
               @click="updateFieldValue(i)"
             >

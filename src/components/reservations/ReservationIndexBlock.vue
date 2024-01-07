@@ -24,8 +24,8 @@ const statusSpecificClasses = computedWithControl(
       : dayjs(props.reservation.arrival_time)
           .subtract(settingsStore.upcomingThreshold, "minute")
           .isBefore()
-      ? "bg-indigo-600 text-white hover:bg-indigo-700"
-      : "bg-indigo-400 text-white hover:bg-indigo-700";
+      ? "bg-primary-600 text-white hover:bg-primary-700"
+      : "bg-primary-400 text-white hover:bg-primary-700";
   }
 );
 
