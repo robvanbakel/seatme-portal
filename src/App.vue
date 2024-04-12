@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainNavigationVue from "@/components/mainMenu/MainNavigation.vue";
+import MainNavigation from "@/components/mainMenu/MainNavigation.vue";
 import RestaurantDetails from "@/components/mainMenu/RestaurantDetails.vue";
 import { useAuthStore } from "@/stores/auth";
 import { useReservationsStore } from "@/stores/reservations";
@@ -36,7 +36,7 @@ supabase.auth.onAuthStateChange(async (event, session) => {
   <div v-else class="flex">
     <nav class="flex min-h-screen w-72 shrink-0 flex-col bg-white px-6">
       <RestaurantDetails class="py-12" />
-      <MainNavigationVue />
+      <MainNavigation />
     </nav>
 
     <main class="grow px-6 pt-12">
