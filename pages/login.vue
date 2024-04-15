@@ -54,8 +54,19 @@ const onSubmit = handleSubmit(async (values) => {
     </p>
     <form :onSubmit>
       <div class="flex flex-col space-y-2">
-        <input v-model="email" autofocus type="text" placeholder="Email" />
-        <input v-model="password" type="password" placeholder="Password" />
+        <input
+          v-model="email"
+          class="border-slate-200 placeholder:text-slate-400"
+          autofocus
+          type="text"
+          placeholder="Email"
+        />
+        <input
+          v-model="password"
+          class="border-slate-200 placeholder:text-slate-400"
+          type="password"
+          placeholder="Password"
+        />
       </div>
       <MainButton
         class="mx-auto mt-6"
