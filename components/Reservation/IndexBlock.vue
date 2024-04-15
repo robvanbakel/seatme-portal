@@ -2,13 +2,12 @@
 import dayjs from "dayjs";
 import { computedWithControl } from "@vueuse/core";
 import { CronJob } from "cron";
-// import { useSettingsStore } from "@/stores/settings";
 import { IconUserFilled } from "@tabler/icons-vue";
+import { useSettingsStore } from "@/stores/settings";
 import type { Reservation } from "@/types";
 import mitt from "@/lib/mitt";
 
-// const settingsStore = useSettingsStore();
-const settingsStore = { upcomingThreshold: 30 };
+const settingsStore = useSettingsStore();
 
 const props = defineProps<{
   reservation: Reservation;
