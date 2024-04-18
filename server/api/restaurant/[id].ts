@@ -1,7 +1,7 @@
 import { serverSupabaseServiceRole } from "#supabase/server";
 
 export default eventHandler(async (event) => {
-  const client = await serverSupabaseServiceRole(event);
+  const client = serverSupabaseServiceRole(event);
 
   const restaurantId = event.context.params?.id;
 

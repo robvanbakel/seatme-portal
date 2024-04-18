@@ -3406,6 +3406,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"change-case@npm:^5.4.4":
+  version: 5.4.4
+  resolution: "change-case@npm:5.4.4"
+  checksum: 10c0/2a9c2b9c9ad6ab2491105aaf506db1a9acaf543a18967798dcce20926c6a173aa63266cb6189f3086e3c14bf7ae1f8ea4f96ecc466fcd582310efa00372f3734
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.5.1, chokidar@npm:^3.5.3, chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
@@ -9274,6 +9281,7 @@ __metadata:
     "@tailwindcss/forms": "npm:^0.5.7"
     "@vee-validate/zod": "npm:^4.12.6"
     "@vue/eslint-config-prettier": "npm:^9.0.0"
+    change-case: "npm:^5.4.4"
     cron: "npm:^3.1.7"
     dayjs: "npm:^1.11.10"
     eslint: "npm:^8.57.0"
