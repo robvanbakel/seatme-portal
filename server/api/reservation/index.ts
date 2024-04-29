@@ -9,7 +9,6 @@ const reservationSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   phone: z.string(),
-  preferred_contact_method: z.enum(["email", "phone"]),
   notes: z.string().nullable(),
 });
 

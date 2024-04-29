@@ -34,14 +34,8 @@ const zodSchema = z.object({
   arrival_time: z
     .string()
     .regex(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/, "Invalid date"),
-  email:
-    props.reservation.preferred_contact_method === "email"
-      ? emailSchema
-      : z.union([emailSchema, z.null()]),
-  phone:
-    props.reservation.preferred_contact_method === "phone"
-      ? phoneSchema
-      : z.union([phoneSchema, z.null()]),
+  email: z.union([emailSchema, z.null()]),
+  phone: z.union([phoneSchema, z.null()]),
   notes: z.union([z.string(), z.null()]),
 });
 
@@ -104,37 +98,23 @@ const formattedTime = computed({
       @update:model-value="updateField('party_size')"
     />
 
-    <solo-fields-text-field
+    <SoloFieldsTextField
       v-model="email"
       cast-null
       label="Email"
       :errorBag="errorBag.email"
       :icon="IconMailFilled"
       @submit="updateField('email')"
-    >
-      <template
-        v-if="reservation.preferred_contact_method === 'email'"
-        #labelDetail
-      >
-        <ReservationPreferredByGuestIndicator />
-      </template>
-    </solo-fields-text-field>
+    />
 
-    <solo-fields-text-field
+    <SoloFieldsTextField
       v-model="phone"
       cast-null
       label="Phone"
       :errorBag="errorBag.phone"
       :icon="IconPhoneFilled"
       @submit="updateField('phone')"
-    >
-      <template
-        v-if="reservation.preferred_contact_method === 'phone'"
-        #labelDetail
-      >
-        <ReservationPreferredByGuestIndicator />
-      </template>
-    </solo-fields-text-field>
+    />
 
     <SoloFieldsTextArea
       v-model="notes"

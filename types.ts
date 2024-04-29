@@ -8,6 +8,5 @@ export type Reservation = {
   notes: string | null;
   email: string | null;
   phone: string | null;
-  preferred_contact_method: "email" | "phone";
   checked_in_at: string | null;
 };
