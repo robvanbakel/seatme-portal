@@ -20,18 +20,18 @@ export default eventHandler(async (event) => {
 
   const formattedBody = changeKeys.snakeCase(body);
 
-  const parsed = reservationSchema.safeParse(formattedBody);
+  const parsedBody = reservationSchema.safeParse(formattedBody);
 
-  if (!parsed.success) {
+  if (!parsedBody.success) {
     throw createError({
       statusCode: 422,
-      message: parsed.error.message,
+      message: parsedBody.error.message,
     });
   }
 
   const { error, data } = await client
     .from("reservation")
-    .insert(parsed.data)
+    .insert(parsedBody.data)
     .select("id")
     .single();
 
