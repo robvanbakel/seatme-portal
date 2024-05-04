@@ -3,13 +3,15 @@ import * as changeKeys from "change-case/keys";
 import { serverSupabaseServiceRole } from "#supabase/server";
 
 const reservationSchema = z.object({
-  arrival_time: z.string(),
   restaurant_id: z.string().uuid(),
-  party_size: z.number().max(99),
-  name: z.string(),
+  arrival_time: z
+    .string()
+    .regex(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/, "Invalid date"),
+  party_size: z.number().min(1).max(99),
+  name: z.string().min(1),
   email: z.string().email(),
-  phone: z.string(),
-  notes: z.string().nullable(),
+  phone: z.string().optional(),
+  notes: z.string().optional(),
 });
 
 export default eventHandler(async (event) => {
