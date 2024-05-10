@@ -31,20 +31,20 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-[320px_auto] gap-x-6 gap-y-2">
-    <h4 class="col-span-full text-lg font-bold">Widget</h4>
-    <p class="text-sm text-slate-400">
+  <setting-blocks-base-block title="Widget">
+    <template #description>
       Configure your widget, copy the code and paste it at the end of the
       <span class="rounded bg-slate-100 p-1 font-mono text-xs"
         >&lt;body&gt;</span
       >
       tag on your website on your website.
-    </p>
+    </template>
+
     <div
       class="break-all rounded-xl bg-slate-800 p-6 font-mono text-xs"
       :class="widgetLink ? 'text-emerald-400' : 'text-slate-400'"
     >
       {{ widgetLink ?? "// Loading widget link…" }}
     </div>
-  </div>
+  </setting-blocks-base-block>
 </template>
