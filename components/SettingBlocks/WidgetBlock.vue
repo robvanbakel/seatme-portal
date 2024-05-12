@@ -33,7 +33,7 @@ onMounted(async () => {
 <template>
   <setting-blocks-base-block title="Widget">
     <template #description>
-      Configure your widget, copy the code and paste it at the end of the
+      Copy the code and paste it at the end of the
       <span class="rounded bg-slate-100 p-1 font-mono text-xs"
         >&lt;body&gt;</span
       >
