@@ -37,7 +37,7 @@ onMounted(async () => {
       <span class="rounded bg-slate-100 p-1 font-mono text-xs"
         >&lt;body&gt;</span
       >
-      tag on your website on your website.
+      tag on your website.
     </template>
 
     <div
