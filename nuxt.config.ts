@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/eslint-module",
     "@nuxtjs/supabase",
     "@pinia/nuxt",
+    "shadcn-nuxt",
   ],
   css: ["@/assets/styles/main.scss"],
   tailwindcss: {
@@ -14,6 +15,10 @@ export default defineNuxtConfig({
   },
   eslint: {
     lintOnStart: false,
+  },
+  shadcn: {
+    prefix: "",
+    componentDir: "./components/ui",
   },
   app: {
     head: {

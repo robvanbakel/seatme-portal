@@ -53,7 +53,7 @@ const blurField = (event: KeyboardEvent) => {
       <textarea
         :id="label"
         v-model="fieldValue"
-        class="absolute size-full min-h-36 rounded-md px-4 py-3 text-slate-800 hover:ring-1 focus:ring-primary-600"
+        class="absolute size-full min-h-36 rounded-md px-4 py-3 text-slate-800 hover:ring-1 focus:ring-primary"
         type="text"
         :class="[
           errorMessage ? errorClasses : 'border-slate-200',

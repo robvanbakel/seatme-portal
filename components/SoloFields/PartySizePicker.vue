@@ -36,7 +36,7 @@ const updateFieldValue = (partySize: number) => {
           :disabled="fieldValue === i"
           :class="
             fieldValue === i
-              ? 'bg-primary-600 text-white'
+              ? 'bg-primary text-white'
               : 'bg-primary-200 text-slate-800 hover:bg-primary-300 active:bg-primary-400'
           "
           @click="updateFieldValue(i)"
