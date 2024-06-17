@@ -23,7 +23,7 @@ const emit = defineEmits<{
 }>();
 
 const errorClasses =
-  "border-error-500 [&:not(:focus)]:bg-error-50 ring-1 ring-error-500";
+  "border-destructive [&:not(:focus)]:bg-error-50 ring-1 ring-destructive";
 
 const errorMessage = computed(() => props.errorBag?.[0]);
 
@@ -73,7 +73,7 @@ const blurField = (event: KeyboardEvent) => {
         >
           <IconExclamationCircle
             v-if="errorMessage"
-            class="text-error-500"
+            class="text-destructive"
             role="button"
             :size="24"
             :stroke-width="2"

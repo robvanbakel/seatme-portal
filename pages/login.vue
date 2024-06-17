@@ -49,7 +49,7 @@ const onSubmit = handleSubmit(async (values) => {
 
 <template>
   <div>
-    <p v-if="!!errorMessage" class="mb-4 text-sm text-error-600">
+    <p v-if="!!errorMessage" class="mb-4 text-sm text-destructive">
       {{ errorMessage }}
     </p>
     <form :onSubmit>
