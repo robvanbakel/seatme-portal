@@ -37,7 +37,7 @@ const updateFieldValue = (partySize: number) => {
           :class="
             fieldValue === i
               ? 'bg-primary text-white'
-              : 'bg-primary-200 text-slate-800 hover:bg-primary-300 active:bg-primary-400'
+              : 'bg-primary/15 text-slate-800 hover:bg-primary/25 active:bg-primary/30'
           "
           @click="updateFieldValue(i)"
         >
