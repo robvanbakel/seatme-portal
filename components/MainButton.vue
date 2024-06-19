@@ -22,7 +22,7 @@ const priorityClasses = computed(() => {
     case "tertiary":
       return "text-slate-400 hover:bg-slate-200 hover:text-slate-600 active:bg-slate-300";
     default:
-      return "bg-primary text-white hover:bg-primary-700 active:bg-primary-800";
+      return "bg-primary text-white hover:bg-primary/90 active:bg-primary/80";
   }
 });
 
