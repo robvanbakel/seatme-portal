@@ -53,7 +53,7 @@ const blurField = (event: KeyboardEvent) => {
       <input
         :id="label"
         v-model="fieldValue"
-        class="absolute size-full rounded-md px-4 text-slate-800 hover:ring-1 focus:ring-primary"
+        class="absolute size-full rounded-md border px-4 text-slate-800 hover:ring-1 focus:ring-primary"
         type="datetime-local"
         :class="[
           errorMessage ? errorClasses : 'border-slate-200',
