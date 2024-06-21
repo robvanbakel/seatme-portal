@@ -42,29 +42,40 @@
     @apply border-border;
   }
 
-  [type="text"]:focus,
-  input:where(:not([type])):focus,
-  [type="email"]:focus,
-  [type="url"]:focus,
-  [type="password"]:focus,
-  [type="number"]:focus,
-  [type="date"]:focus,
-  [type="datetime-local"]:focus,
-  [type="month"]:focus,
-  [type="search"]:focus,
-  [type="tel"]:focus,
-  [type="time"]:focus,
-  [type="week"]:focus,
-  [multiple]:focus,
-  textarea:focus,
-  select:focus {
-    border-color: theme("colors.primary.DEFAULT");
-    --tw-ring-color: theme("colors.primary.DEFAULT");
+  [type="text"],
+  input:where(:not([type])),
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    &:hover {
+      --tw-ring-color: theme("colors.primary.DEFAULT");
+    }
+    &:focus {
+      outline-color: theme("colors.primary.DEFAULT");
+      border-color: theme("colors.primary.DEFAULT");
+      --tw-ring-color: theme("colors.primary.DEFAULT");
+    }
   }
 
-  [type="checkbox"]:focus,
-  [type="radio"]:focus {
-    --tw-ring-color: theme("colors.primary.DEFAULT");
+  [type="checkbox"],
+  [type="radio"] {
+    &:hover {
+      --tw-ring-color: theme("colors.primary.DEFAULT");
+    }
+    &:focus {
+      --tw-ring-color: theme("colors.primary.DEFAULT");
+    }
   }
 }
 
