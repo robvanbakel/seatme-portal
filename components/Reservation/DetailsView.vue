@@ -14,7 +14,7 @@ const cachedReservation = computed(() => {
   });
 });
 
-const { data: reservation, pending } = useAsyncData(
+const { data: reservation, status } = useAsyncData(
   props.reservationId,
   async () => {
     if (cachedReservation.value) return cachedReservation.value;
@@ -31,7 +31,7 @@ const { data: reservation, pending } = useAsyncData(
 </script>
 
 <template>
-  <MainLoader v-if="pending" self-center />
+  <MainLoader v-if="status === 'pending'" self-center />
   <template v-else-if="reservation">
     <h1 class="text-4xl font-bold text-slate-800">
       {{ reservation.name }}
