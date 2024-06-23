@@ -47,5 +47,21 @@ export const useReservationsStore = defineStore("reservations", () => {
 
   realtimeChannel.subscribe();
 
-  return { reservations };
+  const findOne = async (reservationId: string) => {
+    const cachedReservation = reservations.value?.find(({ id }) => {
+      return id === reservationId;
+    });
+
+    if (cachedReservation) return cachedReservation;
+
+    const { data } = await client
+      .from("reservation")
+      .select()
+      .eq("id", reservationId)
+      .single<Reservation>();
+
+    return data;
+  };
+
+  return { reservations, findOne };
 });

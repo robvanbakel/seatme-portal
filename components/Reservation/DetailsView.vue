@@ -1,33 +1,13 @@
 <script setup lang="ts">
-import type { Reservation } from "~/types";
-
 const props = defineProps<{
   reservationId: string;
 }>();
 
-const client = useSupabaseClient();
 const reservationsStore = useReservationsStore();
 
-const cachedReservation = computed(() => {
-  return reservationsStore.reservations?.find(({ id }) => {
-    return id === props.reservationId;
-  });
+const { data: reservation, status } = useAsyncData(props.reservationId, () => {
+  return reservationsStore.findOne(props.reservationId);
 });
-
-const { data: reservation, status } = useAsyncData(
-  props.reservationId,
-  async () => {
-    if (cachedReservation.value) return cachedReservation.value;
-
-    const { data } = await client
-      .from("reservation")
-      .select()
-      .eq("id", props.reservationId)
-      .single<Reservation>();
-
-    return data;
-  },
-);
 </script>
 
 <template>
