@@ -1,27 +1,23 @@
 <script setup lang="ts">
 import { IconLogout } from "@tabler/icons-vue";
 
-const client = useSupabaseClient();
-const user = useSupabaseUser();
+const profileStore = useProfileStore();
 
-const { data } = await useAsyncData("profile", async () => {
-  const { data } = await client
-    .from("profile")
-    .select("restaurant(name)")
-    .single<{
-      restaurant: { name: string };
-    }>();
-
-  return data;
+onMounted(async () => {
+  await profileStore.fetchProfile();
 });
 </script>
 
 <template>
   <div class="flex">
     <nav class="flex min-h-screen w-72 shrink-0 flex-col bg-white px-6">
-      <div v-if="data" class="py-12">
-        <h2 class="text-xl font-bold">{{ data.restaurant.name }}</h2>
-        <p class="text-sm text-slate-400">{{ user?.email }}</p>
+      <div class="py-12">
+        <h2 class="text-xl font-bold">
+          {{ profileStore.profile?.restaurant.name ?? "Loading…" }}
+        </h2>
+        <p class="text-sm text-slate-400">
+          {{ profileStore.profile?.email ?? "Loading…" }}
+        </p>
       </div>
       <MainNavigation />
       <div class="mt-auto py-2">
