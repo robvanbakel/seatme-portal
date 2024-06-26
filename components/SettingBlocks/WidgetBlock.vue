@@ -1,32 +1,16 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed } from "vue";
 
-const client = useSupabaseClient();
-
-const restaurantId = ref<string>();
+const profileStore = useProfileStore();
 
 const widgetLink = computed(() => {
-  if (!restaurantId.value) return;
+  const restaurantId = profileStore.profile?.restaurant.id;
+
+  if (!restaurantId) return;
 
   const src = "https://reservation.getseatme.com/initializer.js";
 
-  return `<script src="${src}" restaurant-id="${restaurantId.value}">${"<"}/script>`;
-});
-
-onMounted(async () => {
-  const { data, error } = await client
-    .from("restaurant")
-    .select("id")
-    .single<{ id: string }>();
-
-  if (error) {
-    throw createError({
-      statusCode: 404,
-      message: "Restaurant not not found",
-    });
-  }
-
-  restaurantId.value = data.id;
+  return `<script src="${src}" restaurant-id="${restaurantId}">${"<"}/script>`;
 });
 </script>
 

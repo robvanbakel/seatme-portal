@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 type Profile = {
   email: string;
   restaurant: {
+    id: string;
     name: string;
   };
 };
@@ -16,7 +17,7 @@ export const useProfileStore = defineStore("profile", () => {
   const fetchProfile = async () => {
     const { data } = await client
       .from("profile")
-      .select("restaurant(name)")
+      .select("restaurant(id, name)")
       .single<{ restaurant: Profile["restaurant"] }>();
 
     if (!data) throw new Error("Profile not found");
