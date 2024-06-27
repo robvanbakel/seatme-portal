@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { IconLogout } from "@tabler/icons-vue";
 
+const client = useSupabaseClient();
 const profileStore = useProfileStore();
 
 onMounted(async () => {
@@ -26,7 +27,7 @@ onMounted(async () => {
           size="small"
           :icon="IconLogout"
           label="Log out"
-          @click="logOut"
+          @click="client.auth.signOut()"
         />
       </div>
     </nav>
