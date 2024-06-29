@@ -32,9 +32,5 @@ export const useProfileStore = defineStore("profile", () => {
     };
   };
 
-  const reset = () => {
-    profile.value = null;
-  };
-
-  return { profile, fetchProfile, reset };
+  return { profile, fetchProfile };
 });
