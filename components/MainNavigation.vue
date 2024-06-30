@@ -2,7 +2,6 @@
 import {
   IconCalendarMonth,
   IconListDetails,
-  IconChartHistogram,
   IconSettings,
 } from "@tabler/icons-vue";
 import type { Component } from "vue";
@@ -22,11 +21,6 @@ const menuItems: {
     label: "Reservations",
     icon: IconListDetails,
     route: "/reservations",
-  },
-  {
-    label: "Reports",
-    icon: IconChartHistogram,
-    route: "/reports",
   },
   {
     label: "Settings",
