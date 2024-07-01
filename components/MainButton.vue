@@ -2,7 +2,7 @@
 import type { FunctionalComponent } from "vue";
 
 const props = defineProps<{
-  label: string;
+  label?: string;
   icon?: FunctionalComponent;
   disabled?: boolean;
   loading?: boolean;
@@ -59,16 +59,19 @@ const iconSize = computed(() => {
   >
     <div
       class="flex items-center justify-center transition-all"
-      :class="{ '-translate-y-2 opacity-0': loading }"
+      :class="[
+        { '-translate-y-2 opacity-0': loading },
+        size === 'small' ? 'gap-2' : 'gap-2.5',
+      ]"
     >
       <component
         :is="icon"
         v-if="!!icon"
         :size="iconSize"
         :stroke-width="1.5"
-        :class="size === 'small' ? 'mr-2' : '-ml-1 mr-2.5'"
+        :class="{ '-ml-1': size !== 'small' && !!label }"
       />
-      {{ label }}
+      <span v-if="!!label">{{ label }}</span>
     </div>
     <Transition
       enter-from-class="translate-y-2 opacity-0"

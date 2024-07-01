@@ -40,8 +40,8 @@ const menuItems: {
       class="flex items-center rounded-2xl p-5 active:bg-slate-100 hover:[&:not(.bg-slate-100)]:bg-slate-50 [&:not(.text-primary)]:text-slate-400"
       active-class="bg-slate-100 text-primary"
     >
-      <component :is="item.icon" :size="24" :stroke-width="1.5" class="mr-4" />
-      {{ item.label }}
+      <component :is="item.icon" :size="24" :stroke-width="1.5" />
+      <span class="ml-4 hidden lg:block">{{ item.label }}</span>
     </nuxt-link>
   </div>
 </template>
